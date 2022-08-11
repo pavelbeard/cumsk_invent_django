@@ -1,0 +1,7 @@
+[client]
+database = 'msdb'
+user = 'root'
+password = 'admin'
+host = 'localhost'
+port = '3306'
+default-character-set = utf8

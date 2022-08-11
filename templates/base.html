@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="" rel="stylesheet">
+    {% block title %}<title>Главная</title>{% endblock %}
+</head>
+<body>
+    {% block content %}
+        <a href="{% url 'applications.device_actualizer:snmpc_devices_all' %}">Все устройства SNMPc</a>
+        <a href="{% url 'applications.device_actualizer:esma_devices_all' %}">Все устройства ЕСМА</a>
+    {% endblock %}
+</body>
+</html>

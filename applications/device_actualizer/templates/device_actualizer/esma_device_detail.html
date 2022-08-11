@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% block title %}<title>Устройство {{ id }}</title>{% endblock %}
+    {% if esma_device_values %}
+        <div>
+            <table>
+                <tr>
+                    {% for field in esma_device_fields %}
+                        <th>{{ field.name }}</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for value in esma_device_values %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+            <p></p>
+        </div>
+    {% else %}
+        <p>Нет данных</p>
+    {% endif %}
+{% endblock %}

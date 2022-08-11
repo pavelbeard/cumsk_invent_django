@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% block title %}<title>Устройства из SNMPc</title>{% endblock %}
+    {% if snmpc_devices %}
+        <div>
+            <div>
+                <a href="{% url 'applications.device_actualizer:snmpc_devices_all'%}"
+                                title="Все устройства">
+                    Все устройства
+                </a>
+                <a href="{% url 'applications.device_actualizer:snmpc_devices_filter' 'cutk' %}"
+                                title="ЦУТК">
+                    ЦУТК
+                </a>
+            </div>
+            <table>
+                <tr>
+                    <th>Имя устройства в SNMPc</th>
+                    <th>Ip-адрес устройства</th>
+                    <th>Примечание</th>
+                </tr>
+                {% for snmpc_device in snmpc_devices %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'applications.device_actualizer:snmpc_device_detail' snmpc_device %}"
+                                title="Просмотреть подробную информацию">
+                                {{ snmpc_device.label }}
+                            </a>
+                        </td>
+                        <td>{{ snmpc_device.address }}</td>
+                        <td>{{ snmpc_device.description }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% else %}
+        <p>Нет данных</p>
+    {% endif %}
+{% endblock %}

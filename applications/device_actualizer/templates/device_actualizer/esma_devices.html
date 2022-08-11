@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% block title %}<title>Устройства из ЕСМА</title>{% endblock %}
+    {% if esma_devices %}
+        <div>
+            <div>
+                <a href="{% url 'applications.device_actualizer:esma_devices_upload_file' %}">
+                    Обновить таблицу
+                </a>
+            </div>
+            <table>
+                <tr>
+                    <th>Имя устройства в ЕСМА</th>
+                    <th>Id в системе управления (ip-адрес(а))</th>
+                    <th>Производитель</th>
+                </tr>
+                {% for esma_device in esma_devices %}
+                    <tr>
+                        <td><a href="{% url 'applications.device_actualizer:esma_device_detail' esma_device %}"
+                                title="Просмотреть подробную информацию">
+                            {{ esma_device.id_device }}
+                        </a></td>
+                        <td>{{ esma_device.id_man }}</td>
+                        <td>{{ esma_device.vendor }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% else %}
+        <p>Нет данных</p>
+    {% endif %}
+{% endblock %}
